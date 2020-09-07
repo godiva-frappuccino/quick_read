@@ -1,6 +1,9 @@
 import MeCab
 
 def bunsetsuWakachi(text):
+    text = text.replace("、", ",")
+    text = text.replace("。", ".")
+
     m = MeCab.Tagger('') #mecabのtagger objectの宣言
     m_result = m.parse(text).splitlines()
     m_result = m_result[:-1] #最後の1行は不要な行なので除く
