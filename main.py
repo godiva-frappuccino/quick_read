@@ -6,6 +6,7 @@ import sys
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+from split_text import bunsetsuWakachi as split_text
 
 class Book:
     book = None
@@ -15,7 +16,8 @@ class Book:
     def __init__(self, path):
         with open(path, "r") as f:
             self.book = f.read()
-            self.book = self.book.splitlines()
+            #self.book = self.book.splitlines()
+            self.book = split_text(self.book)
             self.book_lines = len(self.book)
         print("Conplete Reading file, line_len:{}".format(self.book_lines))
         print(self.book)
@@ -62,7 +64,10 @@ def main(file_name, update_time):
         image = book.make_image()
         cv2.imshow("Text Window", image)
         cv2.imwrite("image.jpg", image)
-        cv2.waitKey(1)
+        k = cv2.waitKey(1)
+        if k == 27:
+            print("ESC is pressed, finish program...")
+            break
         #cv2.destroyAllWindows()
 
 
