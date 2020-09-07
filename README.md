@@ -11,7 +11,7 @@
 * PIL
 * numpy
 * MeCab
-*chardet
+* chardet
 
 ## 2. fontの追加
 .ttfファイルをネットで探して，/quick_readディレクトリ上にfont.ttfというファイル名で追加してください．
