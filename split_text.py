@@ -43,17 +43,14 @@ def bunsetsuWakachi(text):
     ret = list()
     for c in tmp:
         sp = c.split("．")
-        print(sp)
         if len(sp) < 2:
             ret.append(sp[0])
         elif sp[1] == "":
             ret.append(sp[0]+"．")
+            ret.append("")
         else:
             ret.append(sp[0]+"．")
+            ret.append("")
             ret.append(sp[1])
-#        sp = re.split("．|，", c)
-#        for s in sp:
-#            if s != "":
-#                ret.append(s)
+
     return ret
-    #return wakachi
