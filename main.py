@@ -47,9 +47,9 @@ class Book:
         image = self.make_image()
 
 
-def main(file_name):
+def main(file_name, update_time):
     book = Book(file_name)
-    UPDATE_TIME = 0.5
+    UPDATE_TIME = update_time
     cv2.startWindowThread()
     print("Opening Window...")
     time.sleep(1)
@@ -67,9 +67,10 @@ def main(file_name):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 2:
         file_name = sys.argv[1]
+        update_time = float(sys.argv[2])
     else:
-        print("usage: python main.py \"path_to_textfile\"")
+        print("usage: python main.py \"path_to_textfile\" UPDATE_TIME")
         exit(1)
-    main(file_name)
+    main(file_name, update_time)
