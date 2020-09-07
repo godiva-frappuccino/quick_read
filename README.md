@@ -10,6 +10,8 @@
 * OpenCV3.x~
 * PIL
 * numpy
+* MeCab
+*chardet
 
 ## 2. fontの追加
 .ttfファイルをネットで探して，/quick_readディレクトリ上にfont.ttfというファイル名で追加してください．
@@ -19,8 +21,6 @@ demoはこちら( https://fontfree.me/2848 )のコーポレート明朝をダウ
 ## 3. 実行
 以下のコマンドで実行されます．
 ```
-python main.py read.txt
+python main.py read.txt 0.3
 ```
-
-# 今後
-文字の切替速度，改行ではなく文字数による分割などは近いうちに実装します．文字列の読み込みもリッチにしたい…
+read.txtのテキストを分かち書きして文節ごとに0.3秒間表示します．
