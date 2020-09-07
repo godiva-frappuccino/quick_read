@@ -1,8 +1,9 @@
 import MeCab
+import re
 
 def bunsetsuWakachi(text):
-    text = text.replace("、", ",")
-    text = text.replace("。", ".")
+    text = text.replace("、", "， ")
+    text = text.replace("。", "． ")
 
     m = MeCab.Tagger('') #mecabのtagger objectの宣言
     m_result = m.parse(text).splitlines()
@@ -29,4 +30,30 @@ def bunsetsuWakachi(text):
         afterPrepos = pos[0]=='接頭詞'
         afterSahenNoun = 'サ変接続' in pos_detail
     if wakachi[0] == '': wakachi = wakachi[1:] #最初が空文字のとき削除する
-    return wakachi
+    tmp = list()
+    for c in wakachi:
+        sp = c.split("，")
+        if len(sp) < 2:
+            tmp.append(sp[0])
+        elif sp[1] == "":
+            tmp.append(sp[0]+"，")
+        else:
+            tmp.append(sp[0]+"，")
+            tmp.append(sp[1])
+    ret = list()
+    for c in tmp:
+        sp = c.split("．")
+        print(sp)
+        if len(sp) < 2:
+            ret.append(sp[0])
+        elif sp[1] == "":
+            ret.append(sp[0]+"．")
+        else:
+            ret.append(sp[0]+"．")
+            ret.append(sp[1])
+#        sp = re.split("．|，", c)
+#        for s in sp:
+#            if s != "":
+#                ret.append(s)
+    return ret
+    #return wakachi
